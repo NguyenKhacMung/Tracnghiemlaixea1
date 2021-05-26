@@ -1,0 +1,28 @@
+<script>
+        function LoaiThayDoi(ml)
+        {
+            $(".loading").show(100);
+            $.get('XemCauHoi.php?loai='+ml,'',function(data,status,xhr){ 
+                $(".loading").delay(1000).hide(100,function(){
+                    $("#Xem_KetQua").html(data);
+                });
+            });
+        }
+        LoaiThayDoi(0);
+</script>
+
+<div class="xemCauHoi" onload="">
+	<p>Loại câu hỏi:
+    <select onchange="LoaiThayDoi(this.value);" class="form-control-sm">
+        <option value="0">Toàn bộ</option>
+        <option value="1">Khái niệm</option>
+        <option value="2">Quy tắc</option>
+        <option value="3">Tốc độ</option>
+        <option value="4">Văn hóa</option>
+        <option value="5">Biển báo</option>
+        <option value="6">Sa hình</option>
+    </select>
+    <i class="fa fa-superpowers fa-spin fa-fw loading" aria-hidden="true" style="display:none"></i></p>
+    <div id="Xem_KetQua">   
+    </div>
+</div>
